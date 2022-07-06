@@ -164,7 +164,7 @@ function extractData() {
             <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     toDoItems.push(ourNewTask);
-    ourNewTask.render(card, cardsToDo);
+    ourNewTask.render(card, cardsToDo, ourNewTask);
     resetFormClearModal();
     // console.log(toDoItems);
   }
@@ -177,7 +177,7 @@ function extractData() {
             <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     inProgressItems.push(ourNewTask);
-    ourNewTask.render(card, cardsinProgress);
+    ourNewTask.render(card, cardsinProgress, ourNewTask);
     resetFormClearModal();
   }
   if (formValidated === true && setStatus.value === "modalReview") {
@@ -189,7 +189,7 @@ function extractData() {
             <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     reviewItems.push(ourNewTask);
-    ourNewTask.render(card, cardsReview);
+    ourNewTask.render(card, cardsReview, ourNewTask);
     resetFormClearModal();
   }
   if (formValidated === true && setStatus.value === "modalDone") {
@@ -202,7 +202,7 @@ function extractData() {
       <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p>
       </div>`
     doneItems.push(ourNewTask);
-    ourNewTask.render(card, cardsDone)
+    ourNewTask.render(card, cardsDone, ourNewTask)
     resetFormClearModal();
   }
 }

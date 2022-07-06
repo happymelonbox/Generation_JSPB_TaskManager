@@ -23,12 +23,12 @@ class TaskManager {
     localStorage.setItem(task.id, JSON.stringify(task));
   }
 
-  render(card, divToInsert){
+  render(card, divToInsert, task){
     const newDiv = document.createElement("div");
     divToInsert.appendChild(newDiv);
     newDiv.classList.add("card1");
     newDiv.addEventListener("click", () => {
-      editTasks(this), window.scrollTo(0, 0);
+      editTasks(task), window.scrollTo(0, 0);
     });
     newDiv.innerHTML = card;
   }
