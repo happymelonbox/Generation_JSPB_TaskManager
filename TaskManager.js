@@ -15,10 +15,10 @@ class TaskManager {
     this.newSelectStatus = newSelectStatus;
     this.newAddDescription = newAddDescription;
     this.id = TaskManager.id
-    this.storeData()
+    TaskManager.storeData()
   }
 
-  storeData(){ 
+  static storeData(){ 
     let task = {id: ++TaskManager.id, ...this}
     console.log(task)
     localStorage.setItem(task.id, JSON.stringify(task));
