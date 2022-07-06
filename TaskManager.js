@@ -9,13 +9,13 @@ class TaskManager {
     newSelectStatus,
     newAddDescription,
   ) {
-    this.taskArray = [];
     this.newTaskName = newTaskName;
     this.newAssignTo = newAssignTo;
     this.newDueDate = newDueDate;
     this.newSelectStatus = newSelectStatus;
     this.newAddDescription = newAddDescription;
     this.id = TaskManager.id
+    this.storeData()
   }
 
   storeData(){ 
@@ -30,7 +30,6 @@ class TaskManager {
     newDiv.addEventListener("click", () => {
       editTasks(this), window.scrollTo(0, 0);
     });
-    this.storeData();
     newDiv.innerHTML = card;
   }
 
