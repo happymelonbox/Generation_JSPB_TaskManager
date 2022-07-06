@@ -159,7 +159,7 @@ function extractData() {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/redbox.png" alt=""></span>
             <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3> 
-            <p class="taskDescriptionText"> ${ourNewTask.newAdddescription} </p>
+            <p class="taskDescriptionText"> ${ourNewTask.newAddDescription} </p>
             <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
             <hr> 
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
