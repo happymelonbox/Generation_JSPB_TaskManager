@@ -158,10 +158,10 @@ function extractData() {
   if (formValidated === true && setStatus.value === "modalToDo") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/redbox.png" alt=""></span>
-            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3> 
+            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
             <p class="taskDescriptionText"> ${ourNewTask.newAddDescription} </p>
-            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-            <hr> 
+            <img class= "profileCard" src="./Resources/ProfileUser1.png">
+            <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     toDoItems.push(ourNewTask);
     ourNewTask.render(card, cardsToDo);
@@ -171,10 +171,10 @@ function extractData() {
   if (formValidated === true && setStatus.value === "modalInProgress") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/yellowbox.png" alt=""></span>
-            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3> 
+            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
             <p class="taskDescriptionText"> ${ourNewTask.newAddDescription} </p>
-            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-            <hr> 
+            <img class= "profileCard" src="./Resources/ProfileUser1.png">
+            <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     inProgressItems.push(ourNewTask);
     ourNewTask.render(card, cardsinProgress);
@@ -183,10 +183,10 @@ function extractData() {
   if (formValidated === true && setStatus.value === "modalReview") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/bluebox.png" alt=""></span>
-            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3> 
+            <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
             <p class="taskDescriptionText"> ${ourNewTask.newAddDescription} </p>
-            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-            <hr> 
+            <img class= "profileCard" src="./Resources/ProfileUser1.png">
+            <hr>
             <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p></div>`;
     reviewItems.push(ourNewTask);
     ourNewTask.render(card, cardsReview);
@@ -195,10 +195,10 @@ function extractData() {
   if (formValidated === true && setStatus.value === "modalDone") {
     card = `<div id="${ourNewTask.id}">
       <span><img src="./Resources/greenbox.png" alt=""></span>
-      <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3> 
+      <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
       <p class="taskDescriptionText"> ${ourNewTask.newAddDescription} </p>
-      <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-      <hr> 
+      <img class= "profileCard" src="./Resources/ProfileUser1.png">
+      <hr>
       <p class="dueDateText"><strong>DUE:</strong><span>${ourNewTask.newDueDate}</span></p>
       </div>`
     doneItems.push(ourNewTask);
@@ -236,7 +236,7 @@ function editTasks(a) {
     formDelete.style.display = "none";
     modalOverlay.style.opacity = "1";
     modalOverlay.style.backgroundColor = "transparent";
-    
+
   });
 
   modalEditBtnSubmit.addEventListener("click", () => {
@@ -256,12 +256,15 @@ function editTasks(a) {
     a.newSelectStatus = 'modalDone';
     localStorage.setItem(a.id, JSON.stringify(a));
     location.reload(true)
-  if (a.newSelectStatus === "modalDone"){
-    modalBtnDone.style.display = 'none'
-  } else {
-    modalBtnDone.style.display = 'block'
-  }
-})
+  })
+
+    if (a.newSelectStatus === "modalDone"){
+      modalBtnDone.style.display = 'none'
+    } else {
+      modalBtnDone.style.display = 'block'
+    }
+
+
 }
 
 function renderRetrievedTasks() {
@@ -271,10 +274,10 @@ function renderRetrievedTasks() {
     let x = retrievedArray[i];
     if (x.newSelectStatus === "modalReview") {
       let card = `<div id="${x.id}"><span><img src="./Resources/bluebox.png" alt=""></span>
-              <h3> ${x.newTaskName} </h3> 
+              <h3> ${x.newTaskName} </h3>
               <p class="taskDescriptionText"> ${x.newAddDescription} </p>
-              <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-              <hr> 
+              <img class= "profileCard" src="./Resources/ProfileUser1.png">
+              <hr>
               <p class="dueDateText"><strong>DUE:</strong><span>${x.newDueDate}</span></p></div>`;
       const newDiv = document.createElement("div");
       cardsReview.insertAdjacentElement("beforeend", newDiv);
@@ -283,14 +286,14 @@ function renderRetrievedTasks() {
       newDiv.addEventListener("click", () => {
         editTasks(x), window.scrollTo(0, 0);
       });
-      
+
       newDiv.innerHTML = card;
     } else if (x.newSelectStatus === "modalToDo") {
       let card = `<div id="${x.id}"><span><img src="./Resources/redbox.png" alt=""></span>
-              <h3> ${x.newTaskName} </h3> 
+              <h3> ${x.newTaskName} </h3>
               <p class="taskDescriptionText"> ${x.newAddDescription} </p>
-              <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-              <hr> 
+              <img class= "profileCard" src="./Resources/ProfileUser1.png">
+              <hr>
               <p class="dueDateText"><strong>DUE:</strong><span>${x.newDueDate}</span></p> </div>`;
       const newDiv = document.createElement("div");
       cardsToDo.insertAdjacentElement("beforeend", newDiv);
@@ -301,10 +304,10 @@ function renderRetrievedTasks() {
       newDiv.innerHTML = card;
     } else if (x.newSelectStatus === "modalDone") {
       let card = `<div id="${x.id}"><span><img src="./Resources/greenbox.png" alt=""></span>
-              <h3> ${x.newTaskName} </h3> 
+              <h3> ${x.newTaskName} </h3>
               <p class="taskDescriptionText"> ${x.newAddDescription} </p>
-              <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-              <hr> 
+              <img class= "profileCard" src="./Resources/ProfileUser1.png">
+              <hr>
               <p class="dueDateText"><strong>DUE:</strong><span>${x.newDueDate}</span></p></div>`;
       const newDiv = document.createElement("div");
       cardsDone.insertAdjacentElement("beforeend", newDiv);
@@ -315,10 +318,10 @@ function renderRetrievedTasks() {
       newDiv.innerHTML = card;
     } else if (x.newSelectStatus === "modalInProgress") {
       let card = `<div id="${x.id}"><span><img src="./Resources/yellowbox.png" alt=""></span>
-              <h3> ${x.newTaskName} </h3> 
+              <h3> ${x.newTaskName} </h3>
               <p class="taskDescriptionText"> ${x.newAddDescription} </p>
-              <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-              <hr> 
+              <img class= "profileCard" src="./Resources/ProfileUser1.png">
+              <hr>
               <p class="dueDateText"><strong>DUE:</strong><span>${x.newDueDate}</span></p></div>`;
       const newDiv = document.createElement("div");
       cardsinProgress.insertAdjacentElement("beforeend", newDiv);
