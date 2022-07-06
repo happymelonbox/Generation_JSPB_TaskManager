@@ -15,11 +15,10 @@ class TaskManager {
     this.newSelectStatus = newSelectStatus;
     this.newAddDescription = newAddDescription;
     this.id = TaskManager.id
-    TaskManager.storeData()
   }
 
-  static storeData(){ 
-    let task = {id: ++TaskManager.id, ...this}
+  storeData(obj){ 
+    let task = {id: ++TaskManager.id, ...obj}
     console.log(task)
     localStorage.setItem(task.id, JSON.stringify(task));
   }
@@ -32,6 +31,7 @@ class TaskManager {
       editTasks(task), window.scrollTo(0, 0);
     });
     newDiv.innerHTML = card;
+    this.storeData(task)
   }
 
 }
