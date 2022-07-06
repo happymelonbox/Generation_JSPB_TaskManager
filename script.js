@@ -249,19 +249,19 @@ function editTasks(a) {
     a.newSelectStatus = setStatusEdit.value;
     a.newAddDescription = descriptionEdit.value;
     localStorage.setItem(a.id, JSON.stringify(a));
-    location.reload(true)
+    // location.reload(true)
   });
 
-  modalBtnDone.onclick = function () {
+  modalBtnDone.addEventListener('click', () => {
     a.newSelectStatus = 'modalDone';
     localStorage.setItem(a.id, JSON.stringify(a));
-    location.reload(true)
-  }
+    // location.reload(true)
   if (a.newSelectStatus === "modalDone"){
     modalBtnDone.style.display = 'none'
   } else {
     modalBtnDone.style.display = 'block'
   }
+})
 }
 
 function renderRetrievedTasks() {
