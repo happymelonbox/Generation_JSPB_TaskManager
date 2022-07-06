@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="https://fonts.googleapis.com/css2?family=Geo&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <link rel="stylesheet" href="./styles.css">
+     
+    <title>TASK</title>
+</head>
+<body>
+<div id="modalOverlay">
+ <header class="topBar">
+    <h2 class="logo">T<span class=greentestlogo>ASK</span></h2>
+    <span id="dateSpan"> </span>
+        <div class="addTaskBtnMobile">
+            <button id="addTaskBtnMobile" type="button">Add Task</button>
+        </div>  
+ </header>   
+<div class="mobileDiv">
+    <span id="dateSpanMobile"> </span>
+</div>
+<div class="descriptionBar">
+   
+        <textarea id="projectDescription" name="projectDescription" rows="4" cols="180">
+            
+        </textarea>
+   
+    <div class="profilePhoto">
+        <img src="./Resources/ProfileUser1.png">
+    </div>
+</div>
+
+<div class="collabAndAddTaskBtnBar">
+    <div class="collab">
+        <!-- <span>Collaborators:</span>
+        <img src="./Resources/ProfileUser1.png">
+        <img src="./Resources/ProfileUser2.png">
+        <img src="./Resources/ProfileUesr3.png"> -->
+    </div>
+    <div class="addTaskBtn">
+        <button id="myBtn" type="button">Add Task</button>
+        
+    </div>
+</div>
+<main>
+    <div class="cards">
+        <div id="cardsToDo">
+            <h2 class="Heading" id="toDoHeading">To Do</h2>  
+            <!-- <div class="card1">
+                <span><img src="./Resources/redbox.png" alt=""></span>
+                <h3>Task Title Here</h3>
+                <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                <img class= profileCard src="./Resources/ProfileUser1.png">
+                <hr>
+                <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+            </div> -->
+            
+        </div>
+
+
+        <div id="cardsinProgress">
+            <h2 class="Heading" id="inProgressHeading">In Progress</h2> 
+                <!-- <div class="card1">
+                    <span><img src="./Resources/yellowbox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div> -->
+        </div>
+
+        <div id="cardsReview">
+            <h2 class="Heading" id="reviewHeading">Review</h2> 
+                <!-- <div class="card1">
+                    <span><img src="./Resources/bluebox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div> -->
+        </div>
+
+
+        <div id="cardsDone">
+            <h2 class="Heading" id="doneHeading">Done</h2> 
+                <!-- <div class="card1">
+                    <span><img src="./Resources/greenbox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div> -->
+        </div>
+
+    </div>
+    
+</div>    
+
+<!-- NEW TASK modal html -->
+<form class="modal" id="form" action="#" method="GET">
+    <span id="closebtn" class="close">&times;</span>
+    <h2>Add New Task</h2>
+<br>
+    <label for="name">Task Name:</label>
+      <input id="taskName" type="text" />
+      <label for="assignTo">Assign To:</label>
+      <select id="assignedTo" name="assignTo">
+        <option value="">Select Team Member</option>
+        <option value="Betty">Betty</option>
+        <option value="Jonnevie">Jonnevie</option>
+        <option value="Seb">Seb</option>
+        <option value="Pooja">Pooja</option>
+      </select>
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDate" name="dueDate" />
+      
+      <label for="status">Status</label>
+      <select id="setStatus" name="status">
+        <option value="">Select Status</option>
+        <option value="modalToDo">To Do</option>
+        <option value="modalInProgress">In Progress</option>
+        <option value="modalReview">Review</option>
+        <option value="modalDone">Done</option>
+      </select>
+   
+      <label for="description">Description:</label>
+
+      <textarea  id="description" name="description" rows="10" cols="80" value="">
+</textarea>  
+<button id="modalBtn" type="/"  >Submit</button>
+    <div id="errorMsg" style="color: red"></div>
+
+  </form>
+ 
+
+  <!-- Edit Task Modal -->
+
+  <form class="modal" id="formDelete" action="#" method="GET">
+    <span id="closebtnedit" class="close">&times;</span>
+    <h2>Edit Existing Task</h2>
+<br>
+    <label for="name">Task Name:</label>
+      <input id="taskNameEdit" type="text" />
+      <label for="assignTo">Assign To:</label>
+      <select id="assignedToEdit" name="assignTo">
+        <option value="">Select Team Member</option>
+        <option value="Betty">Betty</option>
+        <option value="Jonnevie">Jonnevie</option>
+        <option value="Seb">Seb</option>
+        <option value="Pooja">Pooja</option>
+      </select>
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDateEdit" name="dueDate" />
+      
+      <label for="status">Status</label>
+      <select id="setStatusEdit" name="status">
+        <option value="">Select Status</option>
+        <option value="modalToDo">To Do</option>
+        <option value="modalInProgress">In Progress</option>
+        <option value="modalReview">Review</option>
+        <option value="modalDone">Done</option>
+      </select>
+   
+      <label for="description">Description:</label>
+
+      <textarea id="descriptionEdit" name="description" rows="10" cols="80">
+</textarea>  
+ <div class="button-flex">
+<input type="button" id="modalEditBtnSubmit" type="/" value="Submit" />
+<input type="button" id="modalBtnDel" type="/" value="Delete" />
+<input type="button" id="modalBtnDone" type="/" value="Mark as Done" />
+
+ </div>
+
+    <div id="errorMsg"> </div>
+  
+      <input id="uniqueID" type="text" readonly/>
+   
+
+  
+  </form>
+
+
+</main>
+
+
+
+
+
+
+<script type="module" src="./script.js"></script>
+</body>
+
+
+</html>
