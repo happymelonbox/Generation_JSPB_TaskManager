@@ -25,7 +25,7 @@ class TaskManager {
 
   render(card, divToInsert){
     const newDiv = document.createElement("div");
-    divToInsert.insertAdjacentElement("beforeend", newDiv);
+    divToInsert.appendChild(newDiv);
     newDiv.classList.add("card1");
     newDiv.addEventListener("click", () => {
       editTasks(this), window.scrollTo(0, 0);
