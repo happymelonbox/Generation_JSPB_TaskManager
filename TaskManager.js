@@ -19,8 +19,9 @@ class TaskManager {
   }
 
   storeData(){ 
-    let task = {id: TaskManager.id++, ...this}
+    let task = {id: ++TaskManager.id, ...this}
     localStorage.setItem(task.id, JSON.stringify(task));
+    console.log(task)
   }
 
   render(card, divToInsert, task){
