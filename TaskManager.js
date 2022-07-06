@@ -1,7 +1,7 @@
 import { editTasks } from './script.js'
 //class constructor
 class TaskManager {
-  static id = 0
+  static id = localStorage.getItem(localStorage.length)
   constructor(
     newTaskName,
     newAssignTo,
@@ -14,7 +14,6 @@ class TaskManager {
     this.newDueDate = newDueDate;
     this.newSelectStatus = newSelectStatus;
     this.newAddDescription = newAddDescription;
-    this.id = TaskManager.id
   }
 
   storeData(obj){ 
