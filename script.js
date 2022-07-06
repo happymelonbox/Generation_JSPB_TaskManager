@@ -249,13 +249,13 @@ function editTasks(a) {
     a.newSelectStatus = setStatusEdit.value;
     a.newAddDescription = descriptionEdit.value;
     localStorage.setItem(a.id, JSON.stringify(a));
-    // location.reload(true)
+    location.reload(true)
   });
 
   modalBtnDone.addEventListener('click', () => {
     a.newSelectStatus = 'modalDone';
     localStorage.setItem(a.id, JSON.stringify(a));
-    // location.reload(true)
+    location.reload(true)
   if (a.newSelectStatus === "modalDone"){
     modalBtnDone.style.display = 'none'
   } else {
