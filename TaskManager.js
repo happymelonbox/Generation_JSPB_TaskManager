@@ -1,7 +1,7 @@
 import { editTasks } from './script.js'
 //class constructor
 class TaskManager {
-  static id = localStorage.length
+  static id = Number(localStorage.getItem("latestId"))
   constructor(
     newTaskName,
     newAssignTo,
@@ -20,8 +20,9 @@ class TaskManager {
 
   storeData(obj){ 
     let task = {id: TaskManager.id, ...obj}
+    console.log(task)
     localStorage.setItem(task.id, JSON.stringify(task));
-    TaskManager.id++
+    localStorage.setItem("latestId", TaskManager.id++)
   }
 
   render(card, divToInsert, task){
