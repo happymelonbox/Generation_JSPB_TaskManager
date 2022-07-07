@@ -1,16 +1,15 @@
 import { editTasks } from './script.js'
 //class constructor
 class TaskManager {
-  static id = Number(localStorage.getItem("latestId")) === 0 ? Number(localStorage.getItem("latestId")) : Number(localStorage.getItem("latestId")) + 1
+  static id = Number(localStorage.getItem("latestId")) === 0 ? 0 : Number(localStorage.getItem("latestId"))
   constructor(
     newTaskName,
     newAssignTo,
     newDueDate,
     newSelectStatus,
     newAddDescription,
-    currentId = TaskManager.id
   ) {
-    this.id = currentId
+    this.id = TaskManager.id
     this.newTaskName = newTaskName;
     this.newAssignTo = newAssignTo;
     this.newDueDate = newDueDate;
