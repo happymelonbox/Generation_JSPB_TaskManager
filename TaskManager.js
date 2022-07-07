@@ -1,7 +1,7 @@
 import { editTasks } from './script.js'
 //class constructor
 class TaskManager {
-  static id = Number(localStorage.getItem("latestId"))
+  static id = Number(localStorage.getItem("latestId")) === 0 ? Number(localStorage.getItem("latestId")) : Number(localStorage.getItem("latestId")) + 1
   constructor(
     newTaskName,
     newAssignTo,
