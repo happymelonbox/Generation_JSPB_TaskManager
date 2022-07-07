@@ -219,6 +219,7 @@ for (let i = 0; i < localStorage.length; i++) {
 }}
 
 function editTasks(a) {
+  console.log(a.id)
   formDelete.style.display = "block";
   modalOverlay.style.opacity = "0.3";
   modalOverlay.style.backgroundColor = "gray";
