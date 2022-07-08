@@ -26,7 +26,7 @@ class TaskManager {
   static saveEdit(obj){
     let task = {...obj}
     localStorage.setItem(task.id, JSON.stringify(task))
-    localStorage.setItem("latestId", TaskManager.id++)
+    localStorage.setItem("latestId", TaskManager.id)
   }
 
   static deleteTask(obj){
