@@ -4,8 +4,9 @@ window.addEventListener("load", () => {
   populateArray()
   renderRetrievedTasks();
   form.addEventListener("submit", (e) => {
-    // e.preventDefault();
-    extractData();
+    e.preventDefault();
+    validateForm() ? extractData() : null
+    
     // getAllTasks();
   });
 });
@@ -93,8 +94,8 @@ mobileAddTaskBtn.onclick = function () {
 
 //Validating the form fields
 
-let formValidated = false;
-form.addEventListener("submit", (e) => {
+
+function validateForm(){
   let messages = [];
   if (taskName.value === "") {
     messages.push("Task Name is Required");
@@ -115,14 +116,12 @@ form.addEventListener("submit", (e) => {
     messages.push("Please write a description of at least 20 characters");
   }
   if (messages.length > 0) {
-    e.preventDefault();
     errorElement.innerText = messages.join(". ");
   } else {
-    messages = [];
     errorElement.innerText = messages;
-    return (formValidated = true);
+    return true;
   }
-});
+};
 
 //Grey out past dates- making only future dates clickable
 dueDate.addEventListener("click", function () {
@@ -139,7 +138,6 @@ function resetFormClearModal() {
   modal.style.display = "none";
   modalOverlay.style.opacity = "1";
   modalOverlay.style.backgroundColor = "transparent";
-  formValidated = false;
 }
 
 let latestID = [Math.max(localStorage.length)];
@@ -155,7 +153,7 @@ function extractData() {
   );
   let card;
 
-  if (formValidated === true && setStatus.value === "modalToDo") {
+  if (setStatus.value === "modalToDo") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/redbox.png" alt=""></span>
             <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
@@ -168,7 +166,7 @@ function extractData() {
     resetFormClearModal();
     // console.log(toDoItems);
   }
-  if (formValidated === true && setStatus.value === "modalInProgress") {
+  if (setStatus.value === "modalInProgress") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/yellowbox.png" alt=""></span>
             <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
@@ -180,7 +178,7 @@ function extractData() {
     ourNewTask.render(card, cardsinProgress, ourNewTask);
     resetFormClearModal();
   }
-  if (formValidated === true && setStatus.value === "modalReview") {
+  if (setStatus.value === "modalReview") {
     card = `<div id="${ourNewTask.id}">
             <span><img src="./Resources/bluebox.png" alt=""></span>
             <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
@@ -192,7 +190,7 @@ function extractData() {
     ourNewTask.render(card, cardsReview, ourNewTask);
     resetFormClearModal();
   }
-  if (formValidated === true && setStatus.value === "modalDone") {
+  if (setStatus.value === "modalDone") {
     card = `<div id="${ourNewTask.id}">
       <span><img src="./Resources/greenbox.png" alt=""></span>
       <h3 class="cardTitle"> ${ourNewTask.newTaskName} </h3>
@@ -232,12 +230,11 @@ function editTasks(a) {
   uniqueID.value = a.id;
 
   modalBtnDel.addEventListener("click", () => {
-    localStorage.removeItem(a.id)
     document.getElementById(a.id).style.display = 'none'
     formDelete.style.display = "none";
     modalOverlay.style.opacity = "1";
     modalOverlay.style.backgroundColor = "transparent";
-
+    TaskManager.deleteTask(a)
   });
 
   modalEditBtnSubmit.addEventListener("click", () => {
@@ -249,13 +246,13 @@ function editTasks(a) {
     a.newDueDate = dueDateEdit.value;
     a.newSelectStatus = setStatusEdit.value;
     a.newAddDescription = descriptionEdit.value;
-    localStorage.setItem(a.id, JSON.stringify(a));
+    TaskManager.saveEdit(a)
     location.reload(true)
   });
 
   modalBtnDone.addEventListener('click', () => {
     a.newSelectStatus = 'modalDone';
-    localStorage.setItem(a.id, JSON.stringify(a));
+    TaskManager.saveEdit(a)
     location.reload(true)
   })
 
